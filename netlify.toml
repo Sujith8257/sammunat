@@ -1,8 +1,10 @@
 [build]
   # Build command
-  command = "npm run build"
+  command = "npm ci && npm run build"
   # Directory to publish (Vite's default output directory)
   publish = "dist"
+  # Node version (optional but recommended)
+  environment = { NODE_VERSION = "18" }
 
 # SPA redirect rule - redirect all routes to index.html for client-side routing
 [[redirects]]
@@ -19,12 +21,14 @@
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
     Permissions-Policy = "geolocation=(), microphone=(), camera=()"
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains"
 
-# Cache static assets
+# Cache static assets (JS, CSS)
 [[headers]]
   for = "/assets/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
+    X-Content-Type-Options = "nosniff"
 
 # Cache images
 [[headers]]
@@ -32,7 +36,15 @@
   [headers.values]
     Cache-Control = "public, max-age=31536000"
 [[headers]]
+  for = "/*.jpeg"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000"
+[[headers]]
   for = "/*.png"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000"
+[[headers]]
+  for = "/*.webp"
   [headers.values]
     Cache-Control = "public, max-age=31536000"
 [[headers]]
@@ -43,10 +55,24 @@
   for = "/*.ico"
   [headers.values]
     Cache-Control = "public, max-age=31536000"
+[[headers]]
+  for = "/*.woff"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000"
+[[headers]]
+  for = "/*.woff2"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000"
 
 # Don't cache HTML files
 [[headers]]
   for = "/*.html"
   [headers.values]
     Cache-Control = "public, max-age=0, must-revalidate"
+    X-Content-Type-Options = "nosniff"
 
+# Compression
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Content-Encoding = "gzip"
