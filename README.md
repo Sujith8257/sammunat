@@ -67,6 +67,56 @@ npm run build
 
 The optimized files will be in the `dist/` directory.
 
+## Deployment
+
+### Deploy to Netlify
+
+This project is configured for easy deployment on Netlify.
+
+#### Option 1: Deploy via Netlify UI
+
+1. Push your code to GitHub, GitLab, or Bitbucket
+2. Go to [Netlify](https://www.netlify.com) and sign in
+3. Click "Add new site" → "Import an existing project"
+4. Connect your repository
+5. Netlify will auto-detect the build settings:
+   - **Build command**: `npm run build`
+   - **Publish directory**: `dist`
+6. Click "Deploy site"
+
+#### Option 2: Deploy via Netlify CLI
+
+1. Install Netlify CLI:
+   ```bash
+   npm install -g netlify-cli
+   ```
+
+2. Build the project:
+   ```bash
+   npm run build
+   ```
+
+3. Deploy:
+   ```bash
+   netlify deploy --prod
+   ```
+
+#### Configuration
+
+The project includes:
+- `netlify.toml` - Netlify configuration with build settings, redirects, and headers
+- `public/_redirects` - SPA routing redirects (all routes → index.html)
+
+#### Environment Variables
+
+If you need environment variables, add them in:
+- Netlify Dashboard → Site settings → Environment variables
+
+Or create a `.env` file (don't commit sensitive data):
+```env
+VITE_API_URL=https://api.example.com
+```
+
 ## Design System
 
 - **Primary Colors**: Purple/Blue gradients (#6366F1 to #8B5CF6)
