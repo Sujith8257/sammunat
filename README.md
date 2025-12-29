@@ -79,10 +79,9 @@ This project is configured for easy deployment on Netlify.
 2. Go to [Netlify](https://www.netlify.com) and sign in
 3. Click "Add new site" → "Import an existing project"
 4. Connect your repository
-5. Netlify will auto-detect the build settings from `netlify.toml`:
-   - **Build command**: `npm ci && npm run build`
+5. Netlify will auto-detect the build settings:
+   - **Build command**: `npm run build`
    - **Publish directory**: `dist`
-   - **Node version**: 18
 6. Click "Deploy site"
 
 #### Option 2: Deploy via Netlify CLI
@@ -105,18 +104,8 @@ This project is configured for easy deployment on Netlify.
 #### Configuration
 
 The project includes:
-- `netlify.toml` - Complete Netlify configuration with build settings, redirects, security headers, and caching
+- `netlify.toml` - Netlify configuration with build settings, redirects, and headers
 - `public/_redirects` - SPA routing redirects (all routes → index.html)
-- `.nvmrc` & `.node-version` - Node.js version specification (18)
-- `DEPLOY.md` - Detailed deployment guide with troubleshooting
-
-#### Quick Deploy Checklist
-
-- ✅ Build command configured
-- ✅ SPA routing configured
-- ✅ Security headers enabled
-- ✅ Performance optimizations (caching, compression)
-- ✅ Node version specified
 
 #### Environment Variables
 

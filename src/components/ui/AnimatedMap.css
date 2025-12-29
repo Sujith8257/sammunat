@@ -1,5 +1,5 @@
 /* ============================================
-   Enhanced Animated Map Component Styles
+   Animated Map Component Styles
    ============================================ */
 
 .animated-map {
@@ -8,75 +8,65 @@
     border-radius: var(--radius-2xl);
     overflow: hidden;
     background: linear-gradient(135deg, #1e1b4b 0%, #0f172a 100%);
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-    border: 1px solid rgba(99, 102, 241, 0.2);
-    perspective: 1000px;
-}
-
-/* Floating Particles */
-.animated-map__particles {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    pointer-events: none;
-    z-index: 1;
-    overflow: hidden;
-}
-
-.animated-map__particle {
-    position: absolute;
-    width: 2px;
-    height: 2px;
-    background: linear-gradient(135deg, #6366F1, #EC4899);
-    border-radius: 50%;
-    box-shadow: 0 0 6px rgba(99, 102, 241, 0.6);
 }
 
 .animated-map__container {
     position: relative;
     width: 100%;
-    height: 400px;
+    height: 350px;
     overflow: hidden;
-    z-index: 2;
 }
 
 .animated-map__viewport {
     width: 100%;
     height: 100%;
     transform-origin: center center;
-    transform-style: preserve-3d;
 }
 
 .animated-map__svg {
     width: 100%;
     height: 100%;
-    filter: drop-shadow(0 0 20px rgba(99, 102, 241, 0.2));
 }
 
 /* Continents */
 .animated-map__continents path {
-    transition: fill 0.3s ease, stroke 0.3s ease;
-}
-
-.animated-map__continents path:hover {
-    fill: rgba(99, 102, 241, 0.3);
-    stroke: rgba(99, 102, 241, 0.5);
-}
-
-/* Connection Lines */
-.animated-map__connections path {
-    filter: drop-shadow(0 0 2px rgba(99, 102, 241, 0.5));
+    transition: fill 0.3s ease;
 }
 
 /* Pulse Animation */
 .animated-map__pulse {
+    animation: mapPulse 2s ease-out infinite;
     transform-origin: center;
 }
 
 .animated-map__pulse--delay {
     animation-delay: 0.5s;
+}
+
+.animated-map__pulse--active {
+    animation: mapPulseActive 1.5s ease-out infinite;
+}
+
+@keyframes mapPulse {
+    0% {
+        r: 0.5;
+        opacity: 1;
+    }
+    100% {
+        r: 2;
+        opacity: 0;
+    }
+}
+
+@keyframes mapPulseActive {
+    0% {
+        r: 0.8;
+        opacity: 1;
+    }
+    100% {
+        r: 4;
+        opacity: 0;
+    }
 }
 
 /* Vignette Effect */
@@ -86,26 +76,11 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: radial-gradient(ellipse at center, transparent 25%, rgba(15, 23, 42, 0.9) 100%);
+    background: radial-gradient(ellipse at center, transparent 30%, rgba(15, 23, 42, 0.8) 100%);
     pointer-events: none;
-    z-index: 3;
 }
 
-/* Gradient Overlay */
-.animated-map__gradient-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: 
-        radial-gradient(ellipse 40% 30% at 20% 30%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
-        radial-gradient(ellipse 30% 25% at 80% 70%, rgba(236, 72, 153, 0.15) 0%, transparent 50%);
-    pointer-events: none;
-    z-index: 2;
-}
-
-/* Enhanced Info Card */
+/* Info Card */
 .animated-map__info {
     position: absolute;
     bottom: var(--space-6);
@@ -115,148 +90,71 @@
     align-items: center;
     justify-content: space-between;
     gap: var(--space-4);
-    z-index: 10;
 }
 
 .animated-map__info-card {
     display: flex;
     align-items: center;
     gap: var(--space-4);
-    padding: var(--space-5) var(--space-6);
-    background: rgba(255, 255, 255, 0.12);
-    backdrop-filter: blur(24px) saturate(180%);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: var(--radius-xl);
-    box-shadow: 
-        0 8px 32px rgba(0, 0, 0, 0.3),
-        0 0 0 1px rgba(255, 255, 255, 0.05) inset;
-    transition: all 0.3s ease;
-}
-
-.animated-map__info-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 
-        0 12px 40px rgba(0, 0, 0, 0.4),
-        0 0 0 1px rgba(255, 255, 255, 0.1) inset;
-}
-
-.animated-map__info-flag-wrapper {
-    position: relative;
-    width: 48px;
-    height: 48px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    padding: var(--space-4) var(--space-5);
     background: rgba(255, 255, 255, 0.1);
-    border-radius: var(--radius-lg);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: var(--radius-xl);
 }
 
 .animated-map__info-flag {
     font-size: 32px;
     line-height: 1;
-    display: block;
-    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
-}
-
-.animated-map__info-text {
-    flex: 1;
 }
 
 .animated-map__info-text h4 {
     font-size: var(--text-lg);
     font-weight: var(--font-bold);
     color: white;
-    margin: 0 0 4px 0;
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    margin: 0 0 2px 0;
 }
 
 .animated-map__info-text p {
     font-size: var(--text-sm);
-    color: rgba(255, 255, 255, 0.8);
-    margin: 0 0 6px 0;
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0;
 }
 
-.animated-map__info-meta {
-    display: flex;
-    align-items: center;
-    gap: var(--space-2);
-    margin-top: var(--space-2);
-}
-
-.animated-map__info-timezone {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--space-1);
-    font-size: var(--text-xs);
-    color: rgba(255, 255, 255, 0.6);
-    padding: var(--space-1) var(--space-2);
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: var(--radius-md);
-}
-
-.animated-map__info-timezone svg {
-    width: 12px;
-    height: 12px;
-}
-
-/* Enhanced Indicators */
+/* Indicators */
 .animated-map__indicators {
     display: flex;
     gap: var(--space-2);
 }
 
 .animated-map__indicator {
-    width: 48px;
-    height: 5px;
-    background: rgba(255, 255, 255, 0.15);
+    width: 40px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.2);
     border: none;
     border-radius: var(--radius-full);
     cursor: pointer;
     overflow: hidden;
-    transition: all 0.3s ease;
+    transition: background 0.3s ease;
     padding: 0;
-    position: relative;
 }
 
 .animated-map__indicator:hover {
-    background: rgba(255, 255, 255, 0.25);
-    transform: scaleY(1.2);
-}
-
-.animated-map__indicator--active {
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.3);
 }
 
 .animated-map__indicator-fill {
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, var(--indicator-color, #6366F1), var(--indicator-color, #EC4899));
+    background: linear-gradient(90deg, #6366F1, #EC4899);
     transform-origin: left;
     border-radius: var(--radius-full);
-    box-shadow: 0 0 8px var(--indicator-color, #6366F1);
-}
-
-/* Marker Styles */
-.animated-map__marker {
-    cursor: pointer;
-    transition: transform 0.3s ease;
-}
-
-.animated-map__marker:hover {
-    transform: scale(1.1);
 }
 
 /* Responsive */
-@media (max-width: 1023px) {
-    .animated-map__container {
-        height: 350px;
-    }
-}
-
 @media (max-width: 767px) {
     .animated-map__container {
-        height: 300px;
+        height: 280px;
     }
 
     .animated-map__info {
@@ -269,17 +167,7 @@
     }
 
     .animated-map__info-card {
-        padding: var(--space-4) var(--space-5);
         justify-content: center;
-    }
-
-    .animated-map__info-flag-wrapper {
-        width: 40px;
-        height: 40px;
-    }
-
-    .animated-map__info-flag {
-        font-size: 28px;
     }
 
     .animated-map__indicators {
@@ -287,50 +175,7 @@
     }
 
     .animated-map__indicator {
-        width: 36px;
-        height: 4px;
-    }
-
-    .animated-map__particle {
-        width: 1.5px;
-        height: 1.5px;
+        width: 32px;
     }
 }
 
-/* Animation Enhancements */
-@keyframes mapPulse {
-    0% {
-        r: 0.5;
-        opacity: 1;
-    }
-    100% {
-        r: 2.5;
-        opacity: 0;
-    }
-}
-
-@keyframes mapPulseActive {
-    0% {
-        r: 0.8;
-        opacity: 1;
-    }
-    50% {
-        opacity: 0.8;
-    }
-    100% {
-        r: 5;
-        opacity: 0;
-    }
-}
-
-/* Loading State */
-.animated-map--loading {
-    opacity: 0.7;
-    pointer-events: none;
-}
-
-/* Accessibility */
-.animated-map__indicator:focus-visible {
-    outline: 2px solid rgba(99, 102, 241, 0.8);
-    outline-offset: 2px;
-}
