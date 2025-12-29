@@ -1,0 +1,181 @@
+/* ============================================
+   Animated Map Component Styles
+   ============================================ */
+
+.animated-map {
+    position: relative;
+    width: 100%;
+    border-radius: var(--radius-2xl);
+    overflow: hidden;
+    background: linear-gradient(135deg, #1e1b4b 0%, #0f172a 100%);
+}
+
+.animated-map__container {
+    position: relative;
+    width: 100%;
+    height: 350px;
+    overflow: hidden;
+}
+
+.animated-map__viewport {
+    width: 100%;
+    height: 100%;
+    transform-origin: center center;
+}
+
+.animated-map__svg {
+    width: 100%;
+    height: 100%;
+}
+
+/* Continents */
+.animated-map__continents path {
+    transition: fill 0.3s ease;
+}
+
+/* Pulse Animation */
+.animated-map__pulse {
+    animation: mapPulse 2s ease-out infinite;
+    transform-origin: center;
+}
+
+.animated-map__pulse--delay {
+    animation-delay: 0.5s;
+}
+
+.animated-map__pulse--active {
+    animation: mapPulseActive 1.5s ease-out infinite;
+}
+
+@keyframes mapPulse {
+    0% {
+        r: 0.5;
+        opacity: 1;
+    }
+    100% {
+        r: 2;
+        opacity: 0;
+    }
+}
+
+@keyframes mapPulseActive {
+    0% {
+        r: 0.8;
+        opacity: 1;
+    }
+    100% {
+        r: 4;
+        opacity: 0;
+    }
+}
+
+/* Vignette Effect */
+.animated-map__vignette {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(ellipse at center, transparent 30%, rgba(15, 23, 42, 0.8) 100%);
+    pointer-events: none;
+}
+
+/* Info Card */
+.animated-map__info {
+    position: absolute;
+    bottom: var(--space-6);
+    left: var(--space-6);
+    right: var(--space-6);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4);
+}
+
+.animated-map__info-card {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    padding: var(--space-4) var(--space-5);
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: var(--radius-xl);
+}
+
+.animated-map__info-flag {
+    font-size: 32px;
+    line-height: 1;
+}
+
+.animated-map__info-text h4 {
+    font-size: var(--text-lg);
+    font-weight: var(--font-bold);
+    color: white;
+    margin: 0 0 2px 0;
+}
+
+.animated-map__info-text p {
+    font-size: var(--text-sm);
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0;
+}
+
+/* Indicators */
+.animated-map__indicators {
+    display: flex;
+    gap: var(--space-2);
+}
+
+.animated-map__indicator {
+    width: 40px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    border-radius: var(--radius-full);
+    cursor: pointer;
+    overflow: hidden;
+    transition: background 0.3s ease;
+    padding: 0;
+}
+
+.animated-map__indicator:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.animated-map__indicator-fill {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, #6366F1, #EC4899);
+    transform-origin: left;
+    border-radius: var(--radius-full);
+}
+
+/* Responsive */
+@media (max-width: 767px) {
+    .animated-map__container {
+        height: 280px;
+    }
+
+    .animated-map__info {
+        flex-direction: column;
+        align-items: stretch;
+        gap: var(--space-3);
+        bottom: var(--space-4);
+        left: var(--space-4);
+        right: var(--space-4);
+    }
+
+    .animated-map__info-card {
+        justify-content: center;
+    }
+
+    .animated-map__indicators {
+        justify-content: center;
+    }
+
+    .animated-map__indicator {
+        width: 32px;
+    }
+}
+

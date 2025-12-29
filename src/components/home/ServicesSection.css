@@ -1,0 +1,183 @@
+/* ============================================
+   Services Section Styles - Enhanced
+   ============================================ */
+
+.services {
+    position: relative;
+    background: linear-gradient(180deg, white 0%, var(--color-gray-50) 100%);
+    overflow: hidden;
+}
+
+/* ===== BACKGROUND ELEMENTS ===== */
+.services__background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.services__bg-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(100px);
+    opacity: 0.15;
+}
+
+.services__bg-orb--1 {
+    width: 600px;
+    height: 600px;
+    background: linear-gradient(135deg, var(--color-primary-600), var(--color-purple-600));
+    top: 10%;
+    right: -10%;
+    animation: orbMove 20s ease-in-out infinite;
+}
+
+.services__bg-orb--2 {
+    width: 400px;
+    height: 400px;
+    background: linear-gradient(135deg, var(--color-secondary-500), var(--color-primary-600));
+    bottom: 10%;
+    left: -5%;
+    animation: orbMove 25s ease-in-out infinite reverse;
+}
+
+/* ===== GRID LAYOUT ===== */
+.services__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-8);
+    margin-bottom: var(--space-16);
+}
+
+.services__item {
+    position: relative;
+}
+
+/* ===== CARD COLOR VARIANTS ===== */
+.services__card--primary .card__icon-wrapper {
+    background: linear-gradient(135deg, #6366F1 0%, #8B5CF6 100%);
+}
+
+.services__card--purple .card__icon-wrapper {
+    background: linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%);
+}
+
+.services__card--cyan .card__icon-wrapper {
+    background: linear-gradient(135deg, #06B6D4 0%, #3B82F6 100%);
+}
+
+.services__card--orange .card__icon-wrapper {
+    background: linear-gradient(135deg, #F97316 0%, #FBBF24 100%);
+}
+
+.services__card--pink .card__icon-wrapper {
+    background: linear-gradient(135deg, #EC4899 0%, #8B5CF6 100%);
+}
+
+.services__card--emerald .card__icon-wrapper {
+    background: linear-gradient(135deg, #10B981 0%, #06B6D4 100%);
+}
+
+/* ===== FEATURE TAGS ===== */
+.services__features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin-top: var(--space-4);
+    margin-bottom: var(--space-4);
+}
+
+.services__feature-tag {
+    display: inline-flex;
+    align-items: center;
+    padding: var(--space-1) var(--space-3);
+    background: var(--color-gray-100);
+    border-radius: var(--radius-full);
+    font-size: var(--text-xs);
+    font-weight: var(--font-medium);
+    color: var(--color-gray-600);
+    transition: all 0.3s ease;
+}
+
+.services__card:hover .services__feature-tag {
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.1));
+    color: var(--color-primary-700);
+}
+
+/* ===== CARD LINK ===== */
+.services__card-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--text-sm);
+    font-weight: var(--font-semibold);
+    color: var(--color-primary-600);
+    transition: all 0.3s ease;
+}
+
+.services__card-link svg {
+    transition: transform 0.3s ease;
+}
+
+.services__card:hover .services__card-link {
+    gap: var(--space-3);
+}
+
+.services__card:hover .services__card-link svg {
+    transform: translateX(4px);
+}
+
+/* ===== CTA ===== */
+.services__cta {
+    text-align: center;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .services__grid {
+        gap: var(--space-6);
+    }
+}
+
+@media (max-width: 1023px) {
+    .services__grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-6);
+    }
+
+    .services__bg-orb--1 {
+        width: 400px;
+        height: 400px;
+    }
+
+    .services__bg-orb--2 {
+        width: 300px;
+        height: 300px;
+    }
+}
+
+@media (max-width: 767px) {
+    .services__grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-5);
+    }
+
+    .services__features {
+        justify-content: flex-start;
+    }
+
+    .services__bg-orb {
+        filter: blur(60px);
+        opacity: 0.1;
+    }
+}
+
+/* ===== REDUCED MOTION ===== */
+@media (prefers-reduced-motion: reduce) {
+    .services__bg-orb {
+        animation: none;
+    }
+}

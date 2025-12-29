@@ -1,0 +1,340 @@
+/* ============================================
+   CTA Section Styles - Enhanced with Waves & Particles
+   ============================================ */
+
+.cta-section {
+    position: relative;
+    padding: var(--space-32) 0;
+    overflow: hidden;
+}
+
+/* ===== BACKGROUND ===== */
+.cta-section__background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.cta-section__gradient {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, 
+        #6366F1 0%, 
+        #8B5CF6 30%, 
+        #A855F7 60%, 
+        #EC4899 100%
+    );
+    background-size: 400% 400%;
+    animation: gradient-shift 15s ease infinite;
+}
+
+.cta-section__mesh {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(ellipse 50% 80% at 20% 40%, rgba(255, 255, 255, 0.15) 0%, transparent 50%),
+        radial-gradient(ellipse 60% 60% at 80% 60%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+}
+
+.cta-section__noise {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    opacity: 0.03;
+    mix-blend-mode: overlay;
+}
+
+/* ===== FLOATING ORBS ===== */
+.cta-section__orbs {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+}
+
+.cta-section__orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.4;
+    animation: orbPulse 10s ease-in-out infinite;
+}
+
+.cta-section__orb--1 {
+    width: 400px;
+    height: 400px;
+    background: rgba(255, 255, 255, 0.3);
+    top: -10%;
+    left: -5%;
+    animation-delay: 0s;
+}
+
+.cta-section__orb--2 {
+    width: 300px;
+    height: 300px;
+    background: rgba(236, 72, 153, 0.4);
+    bottom: 10%;
+    right: -5%;
+    animation-delay: 3s;
+}
+
+.cta-section__orb--3 {
+    width: 200px;
+    height: 200px;
+    background: rgba(6, 182, 212, 0.3);
+    top: 50%;
+    left: 40%;
+    animation-delay: 6s;
+}
+
+/* ===== PARTICLES ===== */
+.cta-section__particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+}
+
+.cta-section__particle {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 50%;
+    animation: particleFloat1 20s ease-in-out infinite;
+}
+
+/* ===== WAVE ANIMATION ===== */
+.cta-section__waves {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 200px;
+    overflow: hidden;
+}
+
+.cta-section__wave {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 200%;
+    height: 100%;
+}
+
+.cta-section__wave--1 {
+    animation: wave 20s linear infinite;
+}
+
+.cta-section__wave--2 {
+    animation: wave 25s linear infinite reverse;
+    opacity: 0.5;
+}
+
+/* ===== GRID PATTERN ===== */
+.cta-section__grid {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 80px 80px;
+    mask-image: radial-gradient(ellipse at center, black 20%, transparent 70%);
+    -webkit-mask-image: radial-gradient(ellipse at center, black 20%, transparent 70%);
+}
+
+/* ===== CONTENT ===== */
+.cta-section__content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+    color: white;
+}
+
+/* ===== BADGE ===== */
+.cta-section__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-4);
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: var(--radius-full);
+    font-size: var(--text-sm);
+    font-weight: var(--font-semibold);
+    color: white;
+    margin-bottom: var(--space-6);
+}
+
+.cta-section__badge svg {
+    animation: pulse 2s ease-in-out infinite;
+}
+
+/* ===== TITLE ===== */
+.cta-section__title {
+    font-size: clamp(2rem, 4vw + 1rem, 3.5rem);
+    font-weight: var(--font-extrabold);
+    margin-bottom: var(--space-6);
+    color: white;
+    line-height: 1.2;
+}
+
+.cta-section__title-gradient {
+    display: block;
+    background: linear-gradient(90deg, #fff 0%, rgba(255, 255, 255, 0.8) 50%, #fff 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shimmerGradient 3s linear infinite;
+}
+
+/* ===== SUBTITLE ===== */
+.cta-section__subtitle {
+    font-size: var(--text-xl);
+    line-height: var(--leading-relaxed);
+    margin-bottom: var(--space-10);
+    opacity: 0.9;
+    color: white;
+}
+
+/* ===== BUTTONS ===== */
+.cta-section__buttons {
+    display: flex;
+    gap: var(--space-4);
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: var(--space-12);
+}
+
+.cta-section__button-primary {
+    background: white;
+    color: var(--color-primary-700);
+    border-color: white;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.cta-section__button-primary:hover {
+    background: rgba(255, 255, 255, 0.95);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+}
+
+.cta-section__button-secondary {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.cta-section__button-secondary:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+/* ===== TRUST INDICATORS ===== */
+.cta-section__trust {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-8);
+    flex-wrap: wrap;
+}
+
+.cta-section__trust-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--text-sm);
+    font-weight: var(--font-medium);
+    color: rgba(255, 255, 255, 0.9);
+    padding: var(--space-2) var(--space-4);
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius-full);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.cta-section__trust-icon {
+    font-size: var(--text-base);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1023px) {
+    .cta-section {
+        padding: var(--space-24) 0;
+    }
+
+    .cta-section__orb--1 { width: 300px; height: 300px; }
+    .cta-section__orb--2 { width: 200px; height: 200px; }
+    .cta-section__orb--3 { width: 150px; height: 150px; }
+}
+
+@media (max-width: 767px) {
+    .cta-section {
+        padding: var(--space-20) 0;
+    }
+
+    .cta-section__title {
+        font-size: clamp(1.75rem, 5vw, 2.5rem);
+    }
+
+    .cta-section__subtitle {
+        font-size: var(--text-base);
+    }
+
+    .cta-section__buttons {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .cta-section__trust {
+        flex-direction: column;
+        gap: var(--space-3);
+    }
+
+    .cta-section__waves {
+        height: 100px;
+    }
+
+    .cta-section__particles {
+        display: none;
+    }
+}
+
+/* ===== REDUCED MOTION ===== */
+@media (prefers-reduced-motion: reduce) {
+    .cta-section__gradient {
+        animation: none;
+    }
+
+    .cta-section__wave,
+    .cta-section__orb,
+    .cta-section__particle {
+        animation: none;
+    }
+
+    .cta-section__title-gradient,
+    .cta-section__badge svg {
+        animation: none;
+    }
+}
